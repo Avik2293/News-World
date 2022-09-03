@@ -43,7 +43,14 @@ const cardData = allData => {
     dataFoundValue = " ";
     dataFound.innerText = allData.data.length;
 
-    
+    //Error Message...
+    const errorMsg = document.getElementById('error-msg');
+    if (allData.data.length == 0) {
+        errorMsg.classList.remove('hidden');
+    }
+    else{
+        errorMsg.classList.add('hidden');
+    }
 
     // Card load..
     let cardDisplay = document.getElementById("card");
