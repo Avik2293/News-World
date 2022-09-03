@@ -68,12 +68,12 @@ const cardData = allData => {
                 <h2 class="card-title">${title === null ? "No Data Found" : title}</h2>
                 <p>${details.length > 300 ? details.slice(0, 300) + '...' : details}</p>
                 <div class="flex justify-around">
-                    <div>
+                    <div class="flex">
                         <img class="object-cover h-12 w-10 rounded-full" src="${img}" alt="" srcset="">
                         <p>${((name === null) || (name === "")) ? "No Data Found" : name}</p>
                     </div>
-                    <div>
-                        <h4 class="text-center">Total View: ${total_view === null ? "No Data Found" : total_view}</h4>
+                    <div class="flex">
+                    <i class="fa-solid fa-eye"></i><h4 class="text-center"> ${total_view === null ? "No Data Found" : total_view}</h4>
                     </div>
                     <div class="card-actions justify-end">
                         <label for="my-modal-3" onclick="modal('${_id}')" class="btn modal-button">Details</label>
@@ -114,7 +114,7 @@ const modalData = eachModalData => {
     <h3 class="text-lg font-bold">${title}</h3>
     <p class="py-4">${details}</p>
     `;
-    
+
     // toggleSpinner(false);
 }
 
