@@ -38,17 +38,18 @@ const catagoryData = id => {
 }
 
 const cardData = allData => {
+    console.log(allData);
     let dataFound = document.getElementById("data-calc");
     let dataFoundValue = dataFound.innerText;
     dataFoundValue = " ";
-    dataFound.innerText = allData.data.length;
+    dataFound.innerText = `${allData.data.length} items found for this catagory.`; //allData.data.length;
 
     //Error Message...
     const errorMsg = document.getElementById('error-msg');
     if (allData.data.length == 0) {
         errorMsg.classList.remove('hidden');
     }
-    else{
+    else {
         errorMsg.classList.add('hidden');
     }
 
@@ -69,13 +70,13 @@ const cardData = allData => {
                 <div class="flex justify-around">
                     <div>
                         <img class="object-cover h-12 w-10 rounded-full" src="${img}" alt="" srcset="">
-                        <p>${name === null ? "No Data Found" : name}</p>
+                        <p>${((name === null) || (name === "")) ? "No Data Found" : name}</p>
                     </div>
                     <div>
                         <h4 class="text-center">Total View: ${total_view === null ? "No Data Found" : total_view}</h4>
                     </div>
                     <div class="card-actions justify-end">
-                        <label for="my-modal-3" onclick="modal('${image_url}','${title}', '${details}')" class="btn modal-button">Details</label>
+                        <label for="my-modal-3" onclick="modal('${_id}')" class="btn modal-button">Details</label>
                     </div>
                 </div>
             </div>
@@ -85,55 +86,37 @@ const cardData = allData => {
     toggleSpinner(false);
 }
 
-// For Modal..
-const modal = (image, title, details) => {
-    console.log(image, title, details);
 
-    const modalBody = document.getElementById("modal-id");
-    // modalBody.innerHTML = " ";
-    const displayModal = document.createElement('div');
+//For Modal by _id...
+const modal = (id) => {
+    console.log(id);
 
-    displayModal.innerHTML = `
-    <img src="${image}" alt="" srcset="">
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => modalData(data))
+        // data.catch(() => {console.log("Error:Data Not Found");})
+        // .catch((error) => {
+        //     console.error('Error:', error);
+        // })
+        .catch(error => console.log(error))
+}
+
+const modalData = eachModalData => {
+    let modalDisplay = document.getElementById("modal-id");
+    modalDisplay.innerHTML = " ";
+    const { title, image_url, details } = eachModalData.data[0];
+
+    modalDisplay.innerHTML = `
+    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <img src="${image_url}" alt="" srcset="">
     <h3 class="text-lg font-bold">${title}</h3>
     <p class="py-4">${details}</p>
     `;
-    modalBody.appendChild(displayModal);
+    
+    // toggleSpinner(false);
 }
-
-
-// //For Modal by _id...
-// const modal = (id) => {
-//     console.log(id);
-//     // const urlPart = parseInt(id);
-//     // toggleSpinner(true);
-//     const idString = id;
-//     const idUrl = parseFloat(idString);
-
-//     fetch(`https://openapi.programming-hero.com/api/news/${idUrl}`)
-//         .then(response => response.json())
-//         .then(data => modalData(data))
-//         // data.catch(() => {console.log("Error:Data Not Found");})
-//         // .catch((error) => {
-//         //     console.error('Error:', error);
-//         // })
-//         .catch(error => console.log(error))
-// }
-
-// const modalData = eachModalData => {
-//     let modalDisplay = document.getElementById("modal-id");
-
-//     const { title, image_url, details } = eachModalData.data;
-
-//     const displayModal = document.createElement('div');
-//     displayModal.innerHTML = `
-//     <img src="${image_url}" alt="" srcset="">
-//     <h3 class="text-lg font-bold">${title}</h3>
-//     <p class="py-4">${details}</p>
-//     `;
-//     modalDisplay.appendChild(displayModal);
-//     // toggleSpinner(false);
-// }
 
 
 // Spinner ... 
