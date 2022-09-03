@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News World</title>
+
+    <!-- Daisy UI link...  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <!-- Header Part...  -->
+    <header class="border-4 border-b-indigo-500">
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <a class="btn btn-ghost normal-case text-xl">News World</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal p-0">
+                    <li><a href="index.html">News</a></li>
+                    <li><a>Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="text-center font-extrabold text-5xl">Welcome to Q&A.</h1>
+        <div class="grid grid-cols-2">
+            <div class="card m-2 w-auto bg-neutral text-neutral-content">
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">What is the difference between var, let and const.?</h2>
+                    <p>
+                        * var declarations are globally scoped or function scoped while let and const are block scoped.<br>
+                        * var variables can be updated and re-declared within its scope; let variables can be updated but
+                        not re-declared; const variables can neither be updated nor re-declared.<br>
+                        * They are all hoisted to the top of their scope. But while var variables are initialized with
+                        undefined, let and const variables are not initialized.<br>
+                        * While var and let can be declared without being initialized, const must be initialized during
+                        declaration.
+                    </p>
+                </div>
+            </div>
+            <div class="card m-2 w-auto bg-neutral text-neutral-content">
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">What is the difference between arrow and regular function?</h2>
+                    <p>* In regular function, this value is dynamic, In arrow function it equals to this of the outer function.<br>
+                        * In regular function, arguments will give you list of parameter passed in function, In arrow function arguments is not defined.<br>
+                        * In regular function, you always have to return any value, but in Arrow function you can skip return keyword and write in single line.<br>
+                        * In arrow function parameters should be unique.<br>
+                        * Hoisting matters in arrow function as function get not be invoked before initialisations.</p>
+                </div>
+            </div>
+            <div class="card m-2 w-auto bg-neutral text-neutral-content">
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">what is the difference between map, for each, filter and find?</h2>
+                    <p>.map(): executes the same code on every element in an array and returns a new array with the updated elements.<br>
+                    .forEach: is used to execute the same code on every element in an array but does not change the array and it returns undefined.<br>
+                    .filter(): checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria.<br>
+                    .find(): select a single first element from an array which meet the condition.
+                    </p>
+                </div>
+            </div>
+            <div class="card m-2 w-auto bg-neutral text-neutral-content">
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Why we use template string?</h2>
+                    <p>We use String literals that allow us to do the following things that we cannot do with normal strings.<br>
+                        * Write multi-line string literals.<br>
+                        * Embed expressions in the string and have the JavaScript Runtime interpolate them for you. Interpolate or Interpolation is just a fancy word for the process of parsing a string with a bunch of placeholders and replacing the placeholders with their actual values.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Part...  -->
+    <footer>
+        <footer class="footer footer-center p-5 bg-base-200 text-base-content rounded">
+            <div class="grid grid-flow-col gap-4">
+                <a class="link link-hover">About us</a>
+                <a class="link link-hover">Contact</a>
+                <a class="link link-hover">Jobs</a>
+                <a class="link link-hover">Press kit</a>
+            </div>
+            <div>
+                <div class="grid grid-flow-col gap-4">
+                    <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="fill-current">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                            </path>
+                        </svg></a>
+                    <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="fill-current">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                            </path>
+                        </svg></a>
+                    <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="fill-current">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                            </path>
+                        </svg></a>
+                </div>
+            </div>
+            <div>
+                <p>Copyright © 2022 - All right reserved by Avik Industries Ltd</p>
+            </div>
+        </footer>
+    </footer>
+
+    <!-- Daisy UI Link...  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- JS Link...  -->
+    <script src="app.js"></script>
+</body>
+
+</html>

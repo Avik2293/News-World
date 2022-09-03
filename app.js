@@ -22,6 +22,7 @@ const catagoryData = id => {
         .catch((error) => {
             console.error('Error:', error);
         })
+    // .catch(error => console.log(error));
 }
 
 const cardData = allData => {
@@ -29,7 +30,7 @@ const cardData = allData => {
     cardDisplay.innerHTML = " ";
 
     allData.data.forEach(eachCard => {
-        const { total_view, title, author, thumbnail_url, image_url, details } = eachCard;
+        const { total_view, title, author, thumbnail_url, image_url, details, _id } = eachCard;
         const { img, name } = author;
         const displayCard = document.createElement('div');
         displayCard.classList.add("card", "lg:card-side", "bg-base-100", "shadow-xl", "m-2");
@@ -40,18 +41,63 @@ const cardData = allData => {
                 <p>${details}</p>
                 <div class="flex justify-around">
                     <div>
-                        <img class="object-cover h-12 w-10" src="${img}" alt="" srcset="">
+                        <img class="object-cover h-12 w-10 rounded-full" src="${img}" alt="" srcset="">
                         <p>${name === null ? "No Data Found" : name}</p>
                     </div>
                     <div>
                         <h4 class="text-center">Total View: ${total_view === null ? "No Data Found" : total_view}</h4>
                     </div>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Details</button>
+                        <label for="my-modal-3" onclick="modal(${_id})" class="btn modal-button">Details</label>
                     </div>
                 </div>
             </div>
         `;
         cardDisplay.appendChild(displayCard);
     })
+}
+
+
+// const modalData = (image, title, details) => {
+//     console.log(image, title, details);
+//     // const { id, body } = modals[0];
+//     let modal = document.getElementById("modal-id");
+//     // modal.innerHTML = " ";
+//     const displayModal = document.createElement('div');
+//     // displayModal.classList.add("");
+//     displayModal.innerHTML = `
+//     <img src="${image}" alt="" srcset="">
+//     <h3 class="text-lg font-bold">${title}</h3>
+//     <p class="py-4">${details}</p>
+//     `;
+//     modal.appendChild(displayModal);
+// }
+// console.log(modalData());
+
+const modal = (id) => {
+    console.log(id);
+    // const urlPart = parseInt(id);
+    console.log(urlPart);
+    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+        .then(response => response.json())
+        .then(data => modalData(data))
+        // data.catch(() => {console.log("Error:Data Not Found");})
+        // .catch((error) => {
+        //     console.error('Error:', error);
+        // })
+        .catch(error => console.log(error))
+}
+
+const modalData = eachModalData => {
+    let modalDisplay = document.getElementById("modal-id");
+
+    const { title, image_url, details } = eachModalData.data[0];
+
+    const displayModal = document.createElement('div');
+    displayModal.innerHTML = `
+    <img src="${image_url}" alt="" srcset="">
+    <h3 class="text-lg font-bold">${title}</h3>
+    <p class="py-4">${details}</p>
+    `;
+    modal.appendChild(displayModal);
 }
