@@ -32,7 +32,8 @@
         <!-- Catagory Part...  -->
         <section>
             <div id="cata-display" class="grid grid-cols-5 md:grid-cols-6 xl:flex">
-                <button class="btn btn-primary m-1 btn-xs sm:btn-sm md:btn-md lg:btn-lg"><a href="index.html">Home</a></button>
+                <button class="btn btn-primary m-1 btn-xs sm:btn-sm md:btn-md lg:btn-lg"><a
+                        href="index.html">Home</a></button>
             </div>
         </section>
 
@@ -56,10 +57,8 @@
                     <h1 class="p-3">Sort By View: </h1>
                     <select class="select select-primary max-w-xs">
                         <option disabled selected>Default</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
+                        <button onclick="topView(this)"><option>Top View News</option></button>
+                        <option id="btn-top-view"><button>Top View News</button></option>
                     </select>
                 </div>
                 <div class="flex flex-row-reverse">

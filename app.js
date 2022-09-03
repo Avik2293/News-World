@@ -24,6 +24,10 @@ const displayData = catagory => {
     toggleSpinner(false);
 }
 
+
+// const topViewData = [];
+// console.log(topViewData);
+
 // Data load by Catagory Click...
 const catagoryData = id => {
     toggleSpinner(true);
@@ -34,15 +38,17 @@ const catagoryData = id => {
         .catch((error) => {
             console.error('Error:', error);
         })
-    // .catch(error => console.log(error));
+    // .catch(error => console.log(error))
 }
 
 const cardData = allData => {
     console.log(allData);
+
+
     let dataFound = document.getElementById("data-calc");
     let dataFoundValue = dataFound.innerText;
     dataFoundValue = " ";
-    dataFound.innerText = `${allData.data.length} items found for this catagory.`; //allData.data.length;
+    dataFound.innerText = `${allData.data.length} items found for this catagory.`;
 
     //Error Message...
     const errorMsg = document.getElementById('error-msg');
@@ -57,9 +63,21 @@ const cardData = allData => {
     let cardDisplay = document.getElementById("card");
     cardDisplay.innerHTML = " ";
 
-    allData.data.forEach(eachCard => {
+    // Top View auto...
+    let topView = allData.data;
+    // console.log(topView);
+    topView.sort((a, b) => b.total_view - a.total_view);
+    // console.log(topView);
+
+
+    topView.forEach(eachCard => {
         const { total_view, title, author, thumbnail_url, image_url, details, _id } = eachCard;
         const { img, name } = author;
+
+        // // top view data send...
+        // const eachTopViewData = `{${total_view}, ${_id}}`;
+        // topViewData.push(eachTopViewData);
+
         const displayCard = document.createElement('div');
         displayCard.classList.add("card", "lg:card-side", "bg-base-100", "shadow-xl", "m-2");
         displayCard.innerHTML = `
@@ -129,3 +147,13 @@ const toggleSpinner = isLoading => {
         loaderSection.classList.add('hidden');
     }
 }
+
+
+// Top View part...
+// document.getElementById("btn-top-view").addEventListener("click", function () {
+//     console.log("Hello World!");
+// });
+// const topView = (event) => {
+//     console.log('hello');
+// };
+
