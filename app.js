@@ -3,6 +3,7 @@ fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(data => displayData(data))
 
 const displayData = catagory => {
+    toggleSpinner(true);
     catagory.data.news_category.forEach(eachCatagory => {
         const { category_id, category_name } = eachCatagory;
         const catagoryDisplay = document.getElementById("cata-display");
@@ -11,10 +12,13 @@ const displayData = catagory => {
         <button onclick="catagoryData('${category_id}')" class="btn btn-primary m-1 btn-xs sm:btn-sm md:btn-md lg:btn-lg">${category_name}</button>
         `;
         catagoryDisplay.appendChild(display);
+
     })
+    toggleSpinner(false);
 }
 
 const catagoryData = id => {
+    toggleSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
         .then(response => response.json())
         .then(data => cardData(data))
@@ -55,6 +59,7 @@ const cardData = allData => {
         `;
         cardDisplay.appendChild(displayCard);
     })
+    toggleSpinner(false);
 }
 
 
@@ -77,6 +82,7 @@ const cardData = allData => {
 const modal = (id) => {
     console.log(id);
     // const urlPart = parseInt(id);
+    toggleSpinner(true);
     console.log(urlPart);
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
         .then(response => response.json())
@@ -100,4 +106,17 @@ const modalData = eachModalData => {
     <p class="py-4">${details}</p>
     `;
     modal.appendChild(displayModal);
+    toggleSpinner(false);
+}
+
+
+// Spinner ... 
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('hidden')
+    }
+    else{
+        loaderSection.classList.add('hidden');
+    }
 }
